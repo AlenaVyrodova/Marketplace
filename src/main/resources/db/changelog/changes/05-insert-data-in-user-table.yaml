@@ -1,0 +1,13 @@
+databaseChangeLog:
+  - changeSet:
+      id: insert-data-in-user-table
+      author: alona
+      changes:
+        - insert:
+            tableName: users
+            columns:
+              - column: {name: "email", value: "alona@gmail.com"}
+              - column: {name: "password", value: "123456789123"}
+              - column: {name: "first_name", value: "Alona"}
+              - column: {name: "last_name", value: "Bery"}
+              - column: {name: "shipping_address", value: "Los Angeles"}
