@@ -1,0 +1,22 @@
+databaseChangeLog:
+  - changeSet:
+      id: create-product-category-table
+      author: alona
+      changes:
+        - createTable:
+            tableName: products_categories
+            columns:
+              - column:
+                  name: product_id
+                  type: bigint
+                  constraints:
+                    nullable: false
+                    foreignKeyName: fk_product_product
+                    references: products(id)
+              - column:
+                  name: category_id
+                  type: bigint
+                  constraints:
+                    nullable: false
+                    foreignKeyName: fk_category_product
+                    references: categories(id) 
