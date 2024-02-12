@@ -2,6 +2,7 @@ package com.example.mockostore.service;
 
 import com.example.mockostore.dto.product.CreateProductRequestDto;
 import com.example.mockostore.dto.product.ProductDto;
+import com.example.mockostore.dto.product.ProductDtoWithoutCategoryIds;
 import com.example.mockostore.dto.product.ProductSearchParametersDto;
 import org.springframework.data.domain.Pageable;
 
@@ -21,5 +22,5 @@ public interface ProductService {
     List<ProductDto> searchProductByParams(ProductSearchParametersDto productSearchParameters,
                                            Pageable pageable);
 
-    List findProductByCategoryId(Long id, Pageable pageable);
+    List<ProductDtoWithoutCategoryIds> findAllByCategoryId(Long categoryId);
 }

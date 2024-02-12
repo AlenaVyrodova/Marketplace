@@ -9,4 +9,6 @@ public class ProductDtoWithoutCategoryIds {
     private Double price;
     private String description;
     private String pictureUrl;
+    private String size;
+    private String color;
 }

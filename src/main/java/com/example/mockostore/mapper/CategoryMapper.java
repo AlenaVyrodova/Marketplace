@@ -11,5 +11,5 @@ import org.mapstruct.ReportingPolicy;
 public interface CategoryMapper {
     CategoryDto toDto(Category category);
 
-    Category toEntity(CreateCategoryRequestDto categoryRequestDto);
+    Category toModel(CreateCategoryRequestDto categoryRequestDto);
 }

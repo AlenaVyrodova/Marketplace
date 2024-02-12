@@ -34,7 +34,7 @@ public class CategoryServiceImpl implements CategoryService {
     @Override
     public CategoryDto save(CreateCategoryRequestDto categoryRequestDto) {
         return categoryMapper.toDto(categoryRepository.save(categoryMapper
-                .toEntity(categoryRequestDto)));
+                .toModel(categoryRequestDto)));
     }
 
     @Override
@@ -43,7 +43,7 @@ public class CategoryServiceImpl implements CategoryService {
             throw new EntityNotFoundException("There is not product in db by id %d"
                     .formatted(id));
         }
-        Category updatedCategory = (categoryMapper.toEntity(categoryRequestDto));
+        Category updatedCategory = (categoryMapper.toModel(categoryRequestDto));
         updatedCategory.setId(id);
         return categoryMapper.toDto(categoryRepository.save(updatedCategory));
     }

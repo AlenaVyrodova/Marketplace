@@ -2,6 +2,7 @@ package com.example.mockostore.service.imp;
 
 import com.example.mockostore.dto.product.CreateProductRequestDto;
 import com.example.mockostore.dto.product.ProductDto;
+import com.example.mockostore.dto.product.ProductDtoWithoutCategoryIds;
 import com.example.mockostore.dto.product.ProductSearchParametersDto;
 import com.example.mockostore.mapper.ProductMapper;
 import com.example.mockostore.model.Product;
@@ -69,10 +70,11 @@ productRepository.deleteById(id);
     }
 
     @Override
-    public List findProductByCategoryId(Long id, Pageable pageable) {
-
-        return productRepository.findAllByCategoriesId(id, pageable).stream()
+    public List<ProductDtoWithoutCategoryIds> findAllByCategoryId(Long categoryId) {
+        return productRepository.findAllByCategoryId(categoryId).stream()
                 .map(productMapper::toDtoWithoutCategories)
                 .toList();
     }
+
+
 }

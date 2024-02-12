@@ -27,8 +27,12 @@ public class Product {
     private Double price;
 
     private String description;
-
+    @Column(nullable = false)
     private String pictureUrl;
+
+    private String size;
+    @Column(nullable = false)
+    private String color;
 
     @Column(nullable = false)
     private boolean isDeleted = false;

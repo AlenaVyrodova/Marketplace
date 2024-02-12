@@ -14,6 +14,12 @@ public class CreateProductRequestDto {
     private String description;
     @NotNull
     private String pictureUrl;
+
+    @NotNull
+    private String size;
+    @NotNull
+    private String color;
     @NotEmpty
     private Set<Long> categoriesId;
+
 }

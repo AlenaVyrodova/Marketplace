@@ -11,6 +11,8 @@ public class ProductDto {
     private Double price;
     private String description;
     private String pictureUrl;
+    private String size;
+    private String color;
     private Set<Long> categoriesId;
 
 }
