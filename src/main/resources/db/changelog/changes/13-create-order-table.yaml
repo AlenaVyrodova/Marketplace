@@ -1,10 +1,10 @@
 databaseChangeLog:
   - changeSet:
-      id: create-products-table
+      id: create-orders-table
       author: alona
       changes:
         - createTable:
-            tableName: products
+            tableName: orders
             columns:
               - column:
                   name: id
@@ -12,36 +12,37 @@ databaseChangeLog:
                   autoIncrement: true
                   constraints:
                     primaryKey: true
-                    nullable: false
               - column:
-                  name: name
+                  name: user_id
+                  type: bigint
+                  constraints:
+                    nullable: false
+                    foreignKeyName: fk_orders_user_id
+                    references: users(id)
+              - column:
+                  name: order_status
                   type: varchar(255)
                   constraints:
                     nullable: false
               - column:
-                  name: price
-                  type: decimal(38,2)
+                  name: total
+                  type: decimal
+                  defaultValue: 0
                   constraints:
                     nullable: false
               - column:
-                  name: description
-                  type: varchar(255)
-              - column:
-                  name: color
-                  type: varchar(255)
+                  name: order_date
+                  type: timestamp
                   constraints:
                     nullable: false
               - column:
-                  name: size
+                  name: shipping_address
                   type: varchar(255)
                   constraints:
                     nullable: false
-              - column:
-                  name: picture_url
-                  type: VARCHAR(255)
               - column:
                   name: is_deleted
                   type: boolean
                   defaultValueBoolean: false
                   constraints:
-                    nullable: false
+                    nullable: false 

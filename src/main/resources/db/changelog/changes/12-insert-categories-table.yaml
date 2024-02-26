@@ -1,0 +1,23 @@
+databaseChangeLog:
+  - changeSet:
+      id: insert_categories
+      author: alona
+      changes:
+        - insert:
+            tableName: categories
+            columns:
+              - column:
+                  name: name
+                  value: dress
+              - column:
+                  name: description
+                  value: Champagne Midi Bustier Dress
+        - insert:
+            tableName: categories
+            columns:
+              - column:
+                  name: name
+                  value: t-shirt
+              - column:
+                  name: description
+                  value: Athletic MISSION Tee is made from premium materials for superior comfort. A perfect piece for the active lifestyle.

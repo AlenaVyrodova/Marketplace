@@ -22,21 +22,21 @@ import java.util.List;
 public class ProductController {
     private final ProductService productService;
 
-    @PreAuthorize("hasRole('USER')")
+    @PreAuthorize("hasAnyRole('ROLE_USER','ROLE_ADMIN')")
     @GetMapping
     @Operation(summary = "Get all products", description = "Get a list of all available products")
     public List<ProductDto> getAll(Pageable pageable) {
         return productService.findAll(pageable);
     }
 
-    @PreAuthorize("hasRole('USER')")
+    @PreAuthorize("hasAnyRole('ROLE_USER','ROLE_ADMIN')")
     @GetMapping("/{id}")
     @Operation(summary = "get product by id", description = "get the specified product by id ")
     public ProductDto getBookById(@PathVariable Long id) {
         return productService.findById(id);
     }
 
-    @PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     @Operation(summary = "Create a new product", description = "Create a new product")
@@ -44,7 +44,7 @@ public class ProductController {
         return productService.save(productDto);
     }
 
-    @PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @PutMapping("/{id}")
     @Operation(summary = "update product by id", description = "update product by id")
     public ProductDto updateBookById(@PathVariable Long id,
@@ -52,7 +52,7 @@ public class ProductController {
         return productService.updateById(id, productRequestDto);
     }
 
-    @PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     @Operation(summary = "Delete product by id", description = "Delete specified product by id")
     @DeleteMapping("/{id}")
@@ -60,7 +60,7 @@ public class ProductController {
         productService.deleteById(id);
     }
 
-    @PreAuthorize("hasRole('USER')")
+    @PreAuthorize("hasAnyRole('ROLE_USER','ROLE_ADMIN')")
     @ResponseStatus(HttpStatus.OK)
     @GetMapping("/search")
     public List<ProductDto> searchProducts(ProductSearchParametersDto productSearchParameters,
